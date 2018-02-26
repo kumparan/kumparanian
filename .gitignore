@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Sublime text
+.sublimelinterrc
+
+# Python
+*.pyc
+__pycache__
+
+# Python package
+dist/
+*.egg-info
+build/
+
+# Sublime text
+*.sublime-project
+*.sublime-workspace
+
+# Generated
+README.rst
