@@ -6,7 +6,7 @@ README.rst: README.md
 
 # Install the package
 install:
-	python setup.py install
+	python setup.py develop
 .PHONY: install
 
 # Upload the package to the pypi server
@@ -19,4 +19,6 @@ upload-to-testpypi: README.rst
 	python setup.py sdist upload -r testpypi
 .PHONY: upload-to-testpypi
 
-
+# Run test
+test:
+	python -m kumparanian.ds.verify_model_test

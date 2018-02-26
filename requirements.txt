@@ -1,5 +1,7 @@
 click==6.7
+colorama==0.3.9
 flake8==3.5.0
+-e git+git@gitlab.kumparan.com:data/kumparanian.git@d928ae3a83b0431b4baab96919bb0c4e9a018771#egg=kumparanian
 mccabe==0.6.1
 pycodestyle==2.3.1
 pyflakes==1.6.0

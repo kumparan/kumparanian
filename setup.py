@@ -5,7 +5,7 @@ setup(
     name="kumparanian",
     version="0.0.1",
     entry_points={
-        "console_scripts": ["kumparanian = kumparanian.kumparanian:main"]
+        "console_scripts": ["kumparanian = kumparanian.cli:main"]
     },
     author="Bayu Aldi Yansyah",
     author_email="bayualdiyansyah@gmail.com",
@@ -14,6 +14,10 @@ setup(
     long_description=open("README.rst", "r").read(),
     license="BSD 3-Clause License",
     packages=["kumparanian"],
+    install_requires=[
+        "click==6.7",
+        "colorama==0.3.9"
+    ],
     classifiers=[
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python :: 2.6",

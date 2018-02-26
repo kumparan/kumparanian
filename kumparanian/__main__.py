@@ -1,3 +1,3 @@
-from .kumparanian import main
+from .cli import main
 
 main()
