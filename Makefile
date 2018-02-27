@@ -22,3 +22,4 @@ upload-to-testpypi: README.rst
 # Run test
 test:
 	python -m kumparanian.ds.verify_model_test
+	rm -f test_*
