@@ -18,6 +18,8 @@ of the method.
 In this interface, we implement `save` method to helps you
 save your trained model. You may not edit this directly.
 
+You can add more initialization parameter and define
+new methods to the Model class.
 
 Usage:
 
