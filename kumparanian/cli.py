@@ -39,10 +39,11 @@ def ds_group():
 def verify(model):
     try:
         verify_model(model)
-    except ValueError as err:
+    except Exception as err:
         message = "Error: {}".format(err)
-        click.secho(message, fg='red')
-
+        click.secho(message, fg="red")
+    click.secho("Model is valid.", fg="green")
+    
 
 @ds_group.command(help="Evaluate the model")
 @click.option("--model",
