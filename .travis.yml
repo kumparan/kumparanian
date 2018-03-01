@@ -5,6 +5,8 @@ python:
   - '3.4'
   - '3.5'
   - '3.6'
+before_install:
+  - apt-get install pandoc
 install: make install
 before_script:
   - pip install -r requirements.txt
