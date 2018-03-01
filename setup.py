@@ -3,7 +3,7 @@ from setuptools import setup
 # Package details
 setup(
     name="kumparanian",
-    version="0.0.2",
+    version="0.0.3",
     entry_points={
         "console_scripts": ["kumparanian = kumparanian.cli:main"]
     },
@@ -13,7 +13,10 @@ setup(
     description="Kumparanian CLI",
     long_description=open("README.rst", "r").read(),
     license="BSD 3-Clause License",
-    packages=["kumparanian"],
+    packages=[
+        "kumparanian",
+        "kumparanian.ds"
+    ],
     install_requires=[
         "click==6.7",
         "colorama==0.3.9",
