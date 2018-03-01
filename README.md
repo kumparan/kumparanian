@@ -1,14 +1,13 @@
 # Kumparanian [![Build Status](https://travis-ci.org/kumparan/kumparanian.svg?branch=master)](https://travis-ci.org/kumparan/kumparanian) [![PyPI version](https://badge.fury.io/py/kumparanian.svg)](https://badge.fury.io/py/kumparanian)
 Kumparanian is a set of workflows that optimize Kumparan's data engineering 
-and data scientist hiring process. It's cut down 1-2 working day(s) submission 
-review process in just less than one hour. 
+and data scientist hiring process. It cuts down 1-2 working day(s) submission 
+review process to just less than an hour.
 
-If you are our candidate, you need to install `kumparanian` first by using
-the following command:
+If you are our candidate, you need to install `kumparanian` using following command:
 
     pip install kumparanian 
 
-Show the help command:
+consult its help command:
 
     % kumparanian ds --help
     Usage: kumparanian ds [OPTIONS] COMMAND [ARGS]...
@@ -35,17 +34,17 @@ Show the help command:
       If you found any issues, feel free report it at:
       https://github.com/kumparan/kumparanian/issues
 
-Then read our assessment and you should be good.
+then read our assessment and you should be good.
 
-The following section is not required for candidate, only for project's
+Subsequent sections are not required for candidate as it intended only for project's
 documentation purpose.
 
 
 ## Kumparan's Model Interface
 The first component of Kumparanian is a 
 [Kumparan's Model Interface](./interface/model.py).
-We've designed such interface for Machine Learning model that allow us to 
-design a problem so that it will have a deterministic result.
+We've designed an interface for Machine Learning model that allows us to 
+design a problem to have deterministic result.
 
 The model interface contains 3 required methods: `train`, `predict` and 
 `save`. The candidate will solve the assessment test by implement the `train` 
@@ -56,8 +55,8 @@ Read more about the [Kumparan's Model Interface](./interface/README.md).
 
 
 ## Kumparanian CLI
-The second component of Kumparanian is a `kumparanian(1)`. This CLI will helps
-the candidate to verify and test their model and helps our team to evaluate
+The second component of Kumparanian is a `kumparanian(1)`. This CLI will help
+the candidate to verify and test their model while also help our team to evaluate
 the candidate's trained model.
 
 `kumparanian(1)` can be installed via the following command:
