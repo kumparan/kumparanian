@@ -25,6 +25,12 @@ new methods to the `Model` class.
 
 ### Usage
 
+Install `kumparanian` first:
+    
+    pip install kumparanian
+
+Run
+
     python model.py
 
 It will run the training and save your trained model to
