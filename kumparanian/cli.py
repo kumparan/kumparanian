@@ -1,6 +1,6 @@
 import click
 
-from .ds import verify_model
+import kumparanian.ds as ds
 
 
 @click.group()
@@ -13,7 +13,7 @@ ds_help_text = """For data Scientist role.
 Before you submit your trained model, you can verify your trained model using
 the following command:
 
-$ kumparanian ds verify --model YOURMODEL.pickle
+$ kumparanian ds verify YOURMODEL.pickle
 
 Use the following command to evaluate your trained model against your test
 dataset:
@@ -32,18 +32,17 @@ def ds_group():
 
 
 @ds_group.command(help="Verify the model")
-@click.option("--model",
-              required=True,
-              type=click.Path(exists=True),
-              help="Path to model pickle file")
+@click.argument("model", type=click.Path(exists=True))
 def verify(model):
     try:
-        verify_model(model)
+        ds.model.verify(model)
     except Exception as err:
-        message = "Error: {}".format(err)
+        message = "[INVALID] {}".format(err)
         click.secho(message, fg="red")
-    click.secho("Model is valid.", fg="green")
-    
+        exit(1)
+    click.secho("[VALID] Model is valid.", fg="green")
+    exit(0)
+
 
 @ds_group.command(help="Evaluate the model")
 @click.option("--model",

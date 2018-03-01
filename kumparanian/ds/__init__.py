@@ -1,5 +1,5 @@
 """This module implement a command for the data scientist command group"""
+from .model import verify
+from .model import save
 
-from .verify_model import verify_model
-
-__all__ = ["verify_model"]
+__all__ = [verify, save]
