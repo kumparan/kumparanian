@@ -3,7 +3,7 @@ from setuptools import setup
 # Package details
 setup(
     name="kumparanian",
-    version="0.0.1",
+    version="0.0.2",
     entry_points={
         "console_scripts": ["kumparanian = kumparanian.cli:main"]
     },
