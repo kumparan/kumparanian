@@ -1,0 +1,7 @@
+Usage: kumparanian [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  ds  For data Scientist role.

@@ -21,5 +21,7 @@ upload-to-testpypi: README.rst
 
 # Run test
 test:
-	python -m kumparanian.ds.verify_model_test
-	rm -f test_*
+	python -m tests.cli_test -v
+	python -m tests.ds.model_test -v
+.PHONY: test
+	

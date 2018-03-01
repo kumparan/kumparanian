@@ -1,0 +1,3 @@
+Usage: kumparanian ds verify [OPTIONS] MODEL
+
+Error: Missing argument "model".

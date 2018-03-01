@@ -1,0 +1,6 @@
+Usage: kumparanian ds verify [OPTIONS] MODEL
+
+  Verify the model
+
+Options:
+  --help  Show this message and exit.

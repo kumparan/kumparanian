@@ -1,0 +1,23 @@
+Usage: kumparanian ds [OPTIONS] COMMAND [ARGS]...
+
+  For data Scientist role.
+
+  Before you submit your trained model, you can verify your trained model
+  using the following command:
+
+  $ kumparanian ds verify YOURMODEL.pickle
+
+  Use the following command to evaluate your trained model against your test
+  dataset:
+
+  $ kumparanian ds evaluate --model YOURMODEL.pickle --test-set file.csv
+
+  If you found any issues, feel free report it at:
+  https://github.com/kumparan/kumparanian/issues
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  evaluate  Evaluate the model
+  verify    Verify the model
