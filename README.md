@@ -1,4 +1,4 @@
-# Kumparanian
+# Kumparanian [![Build Status](https://travis-ci.org/kumparan/kumparanian.svg?branch=master)](https://travis-ci.org/kumparan/kumparanian) [![PyPI version](https://badge.fury.io/py/kumparanian.svg)](https://badge.fury.io/py/kumparanian)
 Kumparanian is a set of workflows that optimize Kumparan's data engineering 
 and data scientist hiring process. It's cut down 1-2 working day(s) submission 
 review process in just less than one hour. 
