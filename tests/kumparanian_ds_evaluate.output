@@ -1,0 +1,3 @@
+Usage: kumparanian ds evaluate [OPTIONS] MODEL TESTFILE
+
+Error: Missing argument "model".

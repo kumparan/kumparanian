@@ -55,17 +55,21 @@ def verify(model):
     exit(0)
 
 
-@ds_group.command(help="Evaluate the model")
-@click.option("--model",
-              required=True,
-              type=click.Path(exists=True),
-              help="Path to model pickle file")
-@click.option("--test",
-              required=True,
-              type=click.Path(exists=True),
-              help="Path test set CSV file")
-def evaluate():
-    click.echo("test")
+@ds_group.command(short_help=evaluate_short_help, help=evaluate_usage)
+@click.argument("model", type=click.Path(exists=True))
+@click.argument("testfile", type=click.Path(exists=True))
+def evaluate(model, testfile):
+    # Make sure the model is valid
+    try:
+        ds.model.verify(model)
+    except Exception:
+        message = "Model is invalid, please verify the model"
+        click.secho(message, fg="red")
+        exit(1)
+
+    # Evaluate the model; only shows accuracy
+    acc = ds.model.evaluate(model, testfile, data_type="topic_model")
+    click.echo("Accuracy: {}".format(acc))
 
 
 def main():
