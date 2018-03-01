@@ -5,7 +5,7 @@ README.rst: README.md
 	pandoc --from=markdown --to=rst --output=README.rst README.md
 
 # Install the package
-install:
+install: README.rst
 	python setup.py develop
 .PHONY: install
 
