@@ -2,5 +2,7 @@ Usage: kumparanian ds verify [OPTIONS] MODEL
 
   Verify the model
 
+  Example: $ kumparanian ds verify YOURMODEL.pickle
+
 Options:
   --help  Show this message and exit.

@@ -2,13 +2,10 @@ import click
 
 import kumparanian.ds as ds
 
-
-@click.group()
-def cli():
-    pass
-
-
-ds_help_text = """For data Scientist role.
+# Help text
+epilog = ("If you found any issues, feel free report it at: "
+          "https://github.com/kumparan/kumparanian/issues")
+ds_help_text = """For Data Scientist role.
 
 Before you submit your trained model, you can verify your trained model using
 the following command:
@@ -18,20 +15,34 @@ $ kumparanian ds verify YOURMODEL.pickle
 Use the following command to evaluate your trained model against your test
 dataset:
 
-$ kumparanian ds evaluate --model YOURMODEL.pickle --test-set file.csv
+$ kumparanian ds evaluate YOURMODEL.pickle test_file.csv
+"""
+verify_short_help = "Verify the model"
+verify_usage = """Verify the model
 
-If you found any issues, feel free report it at:
-https://github.com/kumparan/kumparanian/issues
+Example:
+$ kumparanian ds verify YOURMODEL.pickle
+"""
+evaluate_short_help = "Evaluate the model"
+evaluate_usage = """Evaluate the model
 
+Example:
+
+$ kumparanian ds evaluate YOURMODEL.pickle test_file.csv
 """
 
 
-@cli.group(name="ds", help=ds_help_text)
+@click.group(epilog=epilog)
+def cli():
+    pass
+
+
+@cli.group(name="ds", help=ds_help_text, epilog=epilog)
 def ds_group():
     pass
 
 
-@ds_group.command(help="Verify the model")
+@ds_group.command(short_help=verify_short_help, help=verify_usage)
 @click.argument("model", type=click.Path(exists=True))
 def verify(model):
     try:

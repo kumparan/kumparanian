@@ -4,4 +4,7 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  ds  For data Scientist role.
+  ds  For Data Scientist role.
+
+  If you found any issues, feel free report it at:
+  https://github.com/kumparan/kumparanian/issues
