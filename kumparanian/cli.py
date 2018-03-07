@@ -1,35 +1,11 @@
 import click
 
 import kumparanian.ds as ds
+import kumparanian.de as de
 
-# Help text
+# Help texts
 epilog = ("If you found any issues, feel free report it at: "
           "https://github.com/kumparan/kumparanian/issues")
-ds_help_text = """For Data Scientist role.
-
-Before you submit your trained model, you can verify your trained model using
-the following command:
-
-$ kumparanian ds verify YOURMODEL.pickle
-
-Use the following command to evaluate your trained model against your test
-dataset:
-
-$ kumparanian ds evaluate YOURMODEL.pickle test_file.csv
-"""
-verify_short_help = "Verify the model"
-verify_usage = """Verify the model
-
-Example:
-$ kumparanian ds verify YOURMODEL.pickle
-"""
-evaluate_short_help = "Evaluate the model"
-evaluate_usage = """Evaluate the model
-
-Example:
-
-$ kumparanian ds evaluate YOURMODEL.pickle test_file.csv
-"""
 
 
 @click.group(epilog=epilog)
@@ -37,12 +13,13 @@ def cli():
     pass
 
 
-@cli.group(name="ds", help=ds_help_text, epilog=epilog)
+@cli.group(name="ds", help=ds.help_text, epilog=epilog)
 def ds_group():
     pass
 
 
-@ds_group.command(short_help=verify_short_help, help=verify_usage)
+@ds_group.command(short_help=ds.verify_short_help,
+                  help=ds.verify_usage)
 @click.argument("model", type=click.Path(exists=True))
 def verify(model):
     try:
@@ -55,7 +32,8 @@ def verify(model):
     exit(0)
 
 
-@ds_group.command(short_help=evaluate_short_help, help=evaluate_usage)
+@ds_group.command(short_help=ds.evaluate_short_help,
+                  help=ds.evaluate_usage)
 @click.argument("model", type=click.Path(exists=True))
 @click.argument("testfile", type=click.Path(exists=True))
 def evaluate(model, testfile):
@@ -70,6 +48,31 @@ def evaluate(model, testfile):
     # Evaluate the model; only shows accuracy
     acc = ds.model.evaluate(model, testfile, data_type="topic_model")
     click.echo("Accuracy: {}".format(acc))
+
+
+@cli.group(name="de", help=de.help_text, epilog=epilog)
+def de_group():
+    pass
+
+
+@de_group.command(name="generate-dataset",
+                  short_help=de.generate_short_help,
+                  help=de.generate_usage)
+@click.argument("candidate_name", type=str)
+@click.option("--output-dir",
+              default="data",
+              help="Output directory",
+              type=click.Path(exists=False,
+                              file_okay=False,
+                              writable=True))
+@click.option("--num-files", default=40, type=int, help="Number of files")
+@click.option("--num-workers", default=4, type=int, help="Number of workers")
+def generate_dataset(candidate_name, output_dir, num_files, num_workers):
+    de.dataset.generate_data(candidate_name=candidate_name,
+                             output_dir=output_dir,
+                             num_files=num_files,
+                             num_workers=num_workers)
+    click.secho("[kumparanian] Output: " + output_dir + "/", fg="green")
 
 
 def main():

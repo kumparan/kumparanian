@@ -4,6 +4,7 @@ Options:
   --help  Show this message and exit.
 
 Commands:
+  de  For Data Engineer role.
   ds  For Data Scientist role.
 
   If you found any issues, feel free report it at:

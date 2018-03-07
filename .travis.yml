@@ -9,3 +9,6 @@ before_script:
 script: 
   - flake8
   - make test
+branches:
+  only:
+  - master

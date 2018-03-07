@@ -3,7 +3,7 @@ from setuptools import setup
 # Package details
 setup(
     name="kumparanian",
-    version="0.0.4",
+    version="0.0.5",
     entry_points={
         "console_scripts": ["kumparanian = kumparanian.cli:main"]
     },
@@ -15,12 +15,14 @@ setup(
     license="BSD 3-Clause License",
     packages=[
         "kumparanian",
-        "kumparanian.ds"
+        "kumparanian.ds",
+        "kumparanian.de",
     ],
     install_requires=[
         "click==6.7",
         "colorama==0.3.9",
-        "dill==0.2.7.1"
+        "dill==0.2.7.1",
+        "numpy==1.14.1"
     ],
     classifiers=[
         "License :: OSI Approved :: BSD License",
