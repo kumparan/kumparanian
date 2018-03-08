@@ -75,5 +75,20 @@ def generate_dataset(candidate_name, output_dir, num_files, num_workers):
     click.secho("[kumparanian] Output: " + output_dir + "/", fg="green")
 
 
+@de_group.command(name="verify",
+                  short_help=de.verify_short_help,
+                  help=de.verify_usage)
+@click.argument("submission_dir", type=str)
+def verify_submission(submission_dir):
+    try:
+        de.submission.verify(submission_dir)
+    except Exception as err:
+        message = "[INVALID] {}".format(err)
+        click.secho(message, fg="red")
+        exit(1)
+    click.secho("[VALID] Submission is valid.", fg="green")
+    exit(0)
+
+
 def main():
     cli()

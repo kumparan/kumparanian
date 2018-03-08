@@ -18,12 +18,14 @@ Usage: kumparanian de [OPTIONS] COMMAND [ARGS]...
   $ kumparanian de verify de_your_full_name/
 
   It make sure that required files is exists and in the correct format.
+  Please read your assesment email/document for the guideline.
 
 Options:
   --help  Show this message and exit.
 
 Commands:
   generate-dataset  Generate the data
+  verify            Verify the submission
 
   If you found any issues, feel free report it at:
   https://github.com/kumparan/kumparanian/issues

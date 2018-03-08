@@ -18,7 +18,7 @@ your submission using the following command:
 $ kumparanian de verify de_your_full_name/
 
 It make sure that required files is exists and in the correct
-format.
+format. Please read your assesment email/document for the guideline.
 """
 
 generate_short_help = "Generate the data"
@@ -26,6 +26,17 @@ generate_usage = """Generate the data
 
 Example:
 $ kumparanian de generate-dataset your_full_name_in_snake_case
+
+More info:
+$ kumparanian de --help
+"""
+
+
+verify_short_help = "Verify the submission"
+verify_usage = """Verify the submission
+
+Example:
+$ kumparanian de verify de_<your_full_name_in_snake_case>/
 
 More info:
 $ kumparanian de --help
