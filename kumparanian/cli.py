@@ -78,7 +78,7 @@ def generate_dataset(candidate_name, output_dir, num_files, num_workers):
 @de_group.command(name="verify",
                   short_help=de.verify_short_help,
                   help=de.verify_usage)
-@click.argument("submission_dir", type=str)
+@click.argument("submission_dir", type=click.Path(exists=True))
 def verify_submission(submission_dir):
     try:
         de.submission.verify(submission_dir)
@@ -88,6 +88,15 @@ def verify_submission(submission_dir):
         exit(1)
     click.secho("[VALID] Submission is valid.", fg="green")
     exit(0)
+
+
+@de_group.command(name="evaluate",
+                  short_help=de.evaluate_short_help,
+                  help=de.evaluate_usage)
+@click.argument("submission_dir", type=str)
+@click.argument("solution_dir", type=str)
+def evaluate_submission(submission_dir, solution_dir):
+    de.submission.evaluate(submission_dir, solution_dir)
 
 
 def main():
