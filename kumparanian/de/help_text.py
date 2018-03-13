@@ -31,7 +31,6 @@ More info:
 $ kumparanian de --help
 """
 
-
 verify_short_help = "Verify the submission"
 verify_usage = """Verify the submission
 
@@ -40,4 +39,15 @@ $ kumparanian de verify de_<your_full_name_in_snake_case>/
 
 More info:
 $ kumparanian de --help
+"""
+
+evaluate_short_help = "Evaluate the submission"
+evaluate_usage = """Evaluate the submission
+
+Run the solution.py first:
+$ python solution.py --code_id candidate_name --num_file=40
+
+Evaluate the submission:
+$ kumparanian de evaluate submission_dir/ solution_dir/
+
 """

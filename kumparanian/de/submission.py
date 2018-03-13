@@ -80,3 +80,48 @@ def verify(submission_dir):
         assert len(lines) == 2, assertion_err
         for line in lines:
             assert line.isdigit(), "task_4_result.txt should contains a number"
+
+
+def evaluate(submission_dir, solution_dir):
+    """Evaluate the results"""
+    # Task 1
+    submission_path = os.path.join(submission_dir, "task_1_result.txt")
+    solution_path = os.path.join(solution_dir, "task_1", "total_wealth.txt")
+    with open(submission_path, "r") as su, open(solution_path, "r") as so:
+        submission_value = int(su.read().strip())
+        solution_value = int(so.read().strip())
+        error_msg = "Task 1 submission is incorrect"
+        assert submission_value == solution_value, error_msg
+    print("[kumparanian] Task 1: OK")
+
+    # Task 2
+    submission_path = os.path.join(submission_dir, "task_2_result.csv")
+    solution_path = os.path.join(solution_dir, "task_2", "grouped_wealth.csv")
+    with open(submission_path, "r") as su, open(solution_path, "r") as so:
+        surows = csv.DictReader(su)
+        sorows = csv.DictReader(so)
+        error_msg = "Row should equal"
+        for surow, sorow in zip(surows, sorows):
+            assert surow == sorow, error_msg
+    print("[kumparanian] Task 2: OK")
+
+    # Task 3
+    submission_path = os.path.join(submission_dir, "task_3_result.csv")
+    solution_path = os.path.join(solution_dir, "task_3", "richest.csv")
+    with open(submission_path, "r") as su, open(solution_path, "r") as so:
+        surows = csv.DictReader(su)
+        sorows = csv.DictReader(so)
+        error_msg = "Row should equal"
+        for surow, sorow in zip(surows, sorows):
+            assert surow == sorow, error_msg
+    print("[kumparanian] Task 3: OK")
+
+    # Task 4
+    submission_path = os.path.join(submission_dir, "task_4_result.txt")
+    solution_path = os.path.join(solution_dir, "task_3", "richest_stats.txt")
+    with open(submission_path, "r") as su, open(solution_path, "r") as so:
+        submission_value = su.read().strip().split()
+        solution_value = so.read().strip().split()
+        error_msg = "Task 4 submission is incorrect"
+        assert submission_value == solution_value, error_msg
+    print("[kumparanian] Task 4: OK")

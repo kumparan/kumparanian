@@ -20,3 +20,6 @@ build/
 # Generated
 README.rst
 
+# Data Engineer solution module
+solution.py
+
