@@ -24,6 +24,7 @@ Options:
   --help  Show this message and exit.
 
 Commands:
+  evaluate          Evaluate the submission
   generate-dataset  Generate the data
   verify            Verify the submission
 
