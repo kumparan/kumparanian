@@ -98,6 +98,9 @@ def evaluate(submission_dir, solution_dir):
     submission_path = os.path.join(submission_dir, "task_2_result.csv")
     solution_path = os.path.join(solution_dir, "task_2", "grouped_wealth.csv")
     with open(submission_path, "r") as su, open(solution_path, "r") as so:
+        # skip header, sometime there are difference on header
+        su.readline()
+        so.readline()
         surows = csv.DictReader(su)
         sorows = csv.DictReader(so)
         error_msg = "Row should equal"
@@ -109,6 +112,9 @@ def evaluate(submission_dir, solution_dir):
     submission_path = os.path.join(submission_dir, "task_3_result.csv")
     solution_path = os.path.join(solution_dir, "task_3", "richest.csv")
     with open(submission_path, "r") as su, open(solution_path, "r") as so:
+        # skip header, sometime there are difference on header
+        su.readline()
+        so.readline()
         surows = csv.DictReader(su)
         sorows = csv.DictReader(so)
         error_msg = "Row should equal"
