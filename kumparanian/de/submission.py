@@ -85,43 +85,61 @@ def verify(submission_dir):
 def evaluate(submission_dir, solution_dir):
     """Evaluate the results"""
     # Task 1
+    task1 = True
     submission_path = os.path.join(submission_dir, "task_1_result.txt")
     solution_path = os.path.join(solution_dir, "task_1", "total_wealth.txt")
     with open(submission_path, "r") as su, open(solution_path, "r") as so:
         submission_value = int(su.read().strip())
         solution_value = int(so.read().strip())
-        error_msg = "Task 1 submission is incorrect"
-        assert submission_value == solution_value, error_msg
-    print("[kumparanian] Task 1: OK")
+        if submission_value != solution_value:
+            task1 = False
+    if task1:
+        print("[kumparanian] Task 1: OK")
+    else:
+        print("[kumparanian] Task 1: Wrong")
 
     # Task 2
+    task2 = True
     submission_path = os.path.join(submission_dir, "task_2_result.csv")
     solution_path = os.path.join(solution_dir, "task_2", "grouped_wealth.csv")
     with open(submission_path, "r") as su, open(solution_path, "r") as so:
         surows = csv.DictReader(su)
         sorows = csv.DictReader(so)
-        error_msg = "Row should equal"
         for surow, sorow in zip(surows, sorows):
-            assert surow == sorow, error_msg
-    print("[kumparanian] Task 2: OK")
+            if surow != sorow:
+                task2 = False
+                break
+    if task2:
+        print("[kumparanian] Task 2: OK")
+    else:
+        print("[kumparanian] Task 2: Wrong")
 
     # Task 3
+    task3 = True
     submission_path = os.path.join(submission_dir, "task_3_result.csv")
     solution_path = os.path.join(solution_dir, "task_3", "richest.csv")
     with open(submission_path, "r") as su, open(solution_path, "r") as so:
         surows = csv.DictReader(su)
         sorows = csv.DictReader(so)
-        error_msg = "Row should equal"
         for surow, sorow in zip(surows, sorows):
-            assert surow == sorow, error_msg
-    print("[kumparanian] Task 3: OK")
+            if surow != sorow:
+                task3 = False
+                break
+    if task3:
+        print("[kumparanian] Task 3: OK")
+    else:
+        print("[kumparanian] Task 3: Wrong")
 
     # Task 4
+    task4 = True
     submission_path = os.path.join(submission_dir, "task_4_result.txt")
     solution_path = os.path.join(solution_dir, "task_3", "richest_stats.txt")
     with open(submission_path, "r") as su, open(solution_path, "r") as so:
         submission_value = su.read().strip().split()
         solution_value = so.read().strip().split()
-        error_msg = "Task 4 submission is incorrect"
-        assert submission_value == solution_value, error_msg
-    print("[kumparanian] Task 4: OK")
+        if submission_value != solution_value:
+            task4 = False
+    if task4:
+        print("[kumparanian] Task 4: OK")
+    else:
+        print("[kumparanian] Task 4: Wrong")
