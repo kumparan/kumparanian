@@ -128,7 +128,7 @@ def evaluate(submission_dir, solution_dir):
                 break
     if task3:
         print("[kumparanian] Task 3: OK")
-    else: 
+    else:
         print("[kumparanian] Task 3: Wrong")
 
     # Task 4
@@ -143,5 +143,5 @@ def evaluate(submission_dir, solution_dir):
 
     if task4:
         print("[kumparanian] Task 4: OK")
-    else: 
+    else:
         print("[kumparanian] Task 4: Wrong")
