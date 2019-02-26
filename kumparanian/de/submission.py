@@ -93,7 +93,6 @@ def evaluate(submission_dir, solution_dir):
         solution_value = int(so.read().strip())
         if submission_value != solution_value:
             task1 = False
-    
     if task1:
         print("[kumparanian] Task 1: OK")
     else:
@@ -107,7 +106,7 @@ def evaluate(submission_dir, solution_dir):
         surows = csv.DictReader(su)
         sorows = csv.DictReader(so)
         for surow, sorow in zip(surows, sorows):
-            if surow != sorow :
+            if surow != sorow:
                 task2 = False
                 break
     if task2:
@@ -123,7 +122,7 @@ def evaluate(submission_dir, solution_dir):
         surows = csv.DictReader(su)
         sorows = csv.DictReader(so)
         for surow, sorow in zip(surows, sorows):
-            if surow != sorow :
+            if surow != sorow:
                 task3 = False
                 break
     if task3:
@@ -140,7 +139,6 @@ def evaluate(submission_dir, solution_dir):
         solution_value = so.read().strip().split()
         if submission_value != solution_value:
             task4 = False
-
     if task4:
         print("[kumparanian] Task 4: OK")
     else:
