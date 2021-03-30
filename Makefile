@@ -9,10 +9,13 @@ install: README.rst
 	python setup.py develop
 .PHONY: install
 
+build:
+	python setup.py bdist_wheel
+.PHONY: build
+
 # Upload the package to the pypi server
-upload-to-pypi: README.rst
-	python setup.py sdist upload
-.PHONY: upload-to-pypi
+upload-to-pypi:
+	twine upload dist/*
 
 # Upload the package to the test pypi server
 upload-to-testpypi: README.rst
@@ -26,4 +29,4 @@ test:
 	python -m tests.ds.model_test -v
 	rm test_*
 .PHONY: test
-	
+
