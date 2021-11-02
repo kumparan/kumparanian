@@ -3,7 +3,11 @@ Kumparanian is a set of workflows that optimize Kumparan's data engineering
 and data scientist hiring process. It cuts down 1-2 working day(s) submission 
 review process to just less than an hour.
 
-If you are our candidate, you need to install `kumparanian` using following command:
+If you are our candidate, you need to install `kumparanian` using following command (we highly recommend to install inside virtual env, like venv):
+
+    python -m venv <your_env_name>
+
+    source <your_env_name>/bin/activate
 
     pip install kumparanian 
 
