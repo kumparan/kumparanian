@@ -22,16 +22,16 @@ setup(
         "click==6.7",
         "colorama==0.3.9",
         "dill==0.2.7.1",
-        "numpy==1.19.0"
+        "numpy==1.19.5"
     ],
     classifiers=[
         "License :: OSI Approved :: BSD License",
-        # "Programming Language :: Python :: 2.6",
-        # "Programming Language :: Python :: 2.7",
-        # "Programming Language :: Python :: 3",
-        # "Programming Language :: Python :: 3.2",
-        # "Programming Language :: Python :: 3.3",
-        # "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.2",
+        "Programming Language :: Python :: 3.3",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5"
     ]
 )
