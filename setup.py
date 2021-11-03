@@ -7,8 +7,8 @@ setup(
     entry_points={
         "console_scripts": ["kumparanian = kumparanian.cli:main"]
     },
-    author="Bayu Aldi Yansyah",
-    author_email="bayualdiyansyah@gmail.com",
+    author="Bayu Aldi Yansyah, raden panji maharjo",
+    author_email="bayualdiyansyah@gmail.com, radenmaharjo@gmail.com",
     url="https://github.com/kumparan/kumparanian",
     description="Kumparanian CLI",
     long_description=open("README.rst", "r").read(),
