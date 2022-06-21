@@ -22,7 +22,7 @@ setup(
         "click==6.7",
         "colorama==0.3.9",
         "dill==0.2.7.1",
-        "numpy==1.19.5"
+        "numpy==1.22.0"
     ],
     classifiers=[
         "License :: OSI Approved :: BSD License",
