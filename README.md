@@ -59,11 +59,11 @@ Read more about the [Kumparan's Model Interface](./interface/README.md).
 
 
 ## Kumparanian CLI
-The second component of Kumparanian is a `kumparanian(1)`. This CLI will help
+The second component of Kumparanian is a `kumparanian`. This CLI will help
 the candidate to verify and test their model while also help our team to evaluate
 the candidate's trained model.
 
-`kumparanian(1)` can be installed via the following command:
+`kumparanian` can be installed via the following command:
 
     pip install kumparanian
 
