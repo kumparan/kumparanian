@@ -19,19 +19,13 @@ setup(
         "kumparanian.de",
     ],
     install_requires=[
-        "click==6.7",
-        "colorama==0.3.9",
-        "dill==0.2.7.1",
-        "numpy==1.19.5"
+        "click==8.1.7",
+        "colorama==0.4.6",
+        "dill==0.3.8",
+        "numpy==1.26.4"
     ],
     classifiers=[
         "License :: OSI Approved :: BSD License",
-        "Programming Language :: Python :: 2.6",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.2",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5"
+        "Programming Language :: Python :: 3.10",
     ]
 )
