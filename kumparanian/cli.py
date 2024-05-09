@@ -1,4 +1,5 @@
 import click
+import multiprocessing
 
 import kumparanian.ds as ds
 import kumparanian.de as de
@@ -102,5 +103,9 @@ def evaluate_submission(submission_dir, solution_dir):
 def main():
     cli()
 
+
 if __name__ == '__main__':
+    # handle "Error: No such option: --multiprocessing-fork"
+    # read more https://github.com/pyinstaller/pyinstaller/issues/2023
+    multiprocessing.freeze_support()
     cli()
