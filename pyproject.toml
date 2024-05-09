@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kumparanian"
-version = "1.0.5rc3"
+version = "1.0.5rc4"
 description = ""
 authors = ["Zavli Juwantara <zavli.juwantara@kumparan.com>"]
 license = "kumparan"

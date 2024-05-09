@@ -101,3 +101,6 @@ def evaluate_submission(submission_dir, solution_dir):
 
 def main():
     cli()
+
+if __name__ == '__main__':
+    cli()
