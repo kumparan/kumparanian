@@ -1,10 +1,15 @@
 [tool.poetry]
 name = "kumparanian"
-version = "1.0.4"
+version = "1.0.5rc3"
 description = ""
 authors = ["Zavli Juwantara <zavli.juwantara@kumparan.com>"]
 license = "kumparan"
 readme = "README.md"
+packages = [
+    { include = "kumparanian" },
+    { include = "kumparanian/de" },
+    { include = "kumparanian/ds" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -17,3 +22,6 @@ colorama = "^0.4.6"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-pyinstaller-plugin.scripts]
+kumparanian = { source = "kumparanian/cli.py", type = "onedir", bundle = true }
