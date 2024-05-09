@@ -1,12 +1,15 @@
-import click
 import multiprocessing
 
-import kumparanian.ds as ds
+import click
+
 import kumparanian.de as de
+import kumparanian.ds as ds
 
 # Help texts
-epilog = ("If you found any issues, feel free report it at: "
-          "https://github.com/kumparan/kumparanian/issues")
+epilog = (
+    "If you found any issues, feel free report it at: "
+    "https://github.com/kumparan/kumparanian/issues"
+)
 
 
 @click.group(epilog=epilog)
@@ -19,8 +22,7 @@ def ds_group():
     pass
 
 
-@ds_group.command(short_help=ds.verify_short_help,
-                  help=ds.verify_usage)
+@ds_group.command(short_help=ds.verify_short_help, help=ds.verify_usage)
 @click.argument("model", type=click.Path(exists=True))
 def verify(model):
     try:
@@ -33,8 +35,7 @@ def verify(model):
     exit(0)
 
 
-@ds_group.command(short_help=ds.evaluate_short_help,
-                  help=ds.evaluate_usage)
+@ds_group.command(short_help=ds.evaluate_short_help, help=ds.evaluate_usage)
 @click.argument("model", type=click.Path(exists=True))
 @click.argument("testfile", type=click.Path(exists=True))
 def evaluate(model, testfile):
@@ -56,29 +57,29 @@ def de_group():
     pass
 
 
-@de_group.command(name="generate-dataset",
-                  short_help=de.generate_short_help,
-                  help=de.generate_usage)
+@de_group.command(
+    name="generate-dataset", short_help=de.generate_short_help, help=de.generate_usage
+)
 @click.argument("candidate_name", type=str)
-@click.option("--output-dir",
-              default="data",
-              help="Output directory",
-              type=click.Path(exists=False,
-                              file_okay=False,
-                              writable=True))
+@click.option(
+    "--output-dir",
+    default="data",
+    help="Output directory",
+    type=click.Path(exists=False, file_okay=False, writable=True),
+)
 @click.option("--num-files", default=40, type=int, help="Number of files")
 @click.option("--num-workers", default=4, type=int, help="Number of workers")
 def generate_dataset(candidate_name, output_dir, num_files, num_workers):
-    de.dataset.generate_data(candidate_name=candidate_name,
-                             output_dir=output_dir,
-                             num_files=num_files,
-                             num_workers=num_workers)
+    de.dataset.generate_data(
+        candidate_name=candidate_name,
+        output_dir=output_dir,
+        num_files=num_files,
+        num_workers=num_workers,
+    )
     click.secho("[kumparanian] Output: " + output_dir + "/", fg="green")
 
 
-@de_group.command(name="verify",
-                  short_help=de.verify_short_help,
-                  help=de.verify_usage)
+@de_group.command(name="verify", short_help=de.verify_short_help, help=de.verify_usage)
 @click.argument("submission_dir", type=click.Path(exists=True))
 def verify_submission(submission_dir):
     try:
@@ -91,9 +92,9 @@ def verify_submission(submission_dir):
     exit(0)
 
 
-@de_group.command(name="evaluate",
-                  short_help=de.evaluate_short_help,
-                  help=de.evaluate_usage)
+@de_group.command(
+    name="evaluate", short_help=de.evaluate_short_help, help=de.evaluate_usage
+)
 @click.argument("submission_dir", type=str)
 @click.argument("solution_dir", type=str)
 def evaluate_submission(submission_dir, solution_dir):
@@ -104,7 +105,7 @@ def main():
     cli()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # handle "Error: No such option: --multiprocessing-fork"
     # read more https://github.com/pyinstaller/pyinstaller/issues/2023
     multiprocessing.freeze_support()
