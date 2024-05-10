@@ -1,4 +1,5 @@
 import unittest
+
 import dill
 
 import kumparanian.ds as ds
@@ -88,5 +89,5 @@ class TestModel(unittest.TestCase):
         self.assertTrue(ds.model.verify(file_name))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

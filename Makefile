@@ -22,6 +22,10 @@ upload-to-testpypi: README.rst
 	python setup.py sdist upload -r testpypi
 .PHONY: upload-to-testpypi
 
+run-formatter:
+	isort .
+	black .
+
 # Run test
 test:
 	flake8

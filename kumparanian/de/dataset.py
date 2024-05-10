@@ -1,11 +1,12 @@
-import os
-import multiprocessing as mp
-import numpy as np
 import hashlib
+import multiprocessing as mp
+import os
+
+import numpy as np
 
 
 def generate_partition(random_seed, output_file):
-    """Generate partition given random seed and output file """
+    """Generate partition given random seed and output file"""
     print("[kumparanian]: Generating {} ...".format(output_file))
 
     # Set random seed to get a consistent output
@@ -25,11 +26,10 @@ def generate_partition(random_seed, output_file):
     num_list = (np.random.pareto(1.3, max_data) * m_val).astype(int)
 
     # Generating id
-    max_id_int = 2**40-1
-    random_ids = np.random.randint(low=0,
-                                   high=max_id_int,
-                                   size=max_data,
-                                   dtype=np.int64)
+    max_id_int = 2**40 - 1
+    random_ids = np.random.randint(
+        low=0, high=max_id_int, size=max_data, dtype=np.int64
+    )
     id_list = np.unique(random_ids)
     # Generating the pair of id and number
     max_data = min(len(id_list), max_data)
@@ -37,17 +37,18 @@ def generate_partition(random_seed, output_file):
     # Writing the result into output_file
     header = "account_id,account_balance"
     output = open(output_file, "w")
-    output.write(header+"\n")
+    output.write(header + "\n")
     output.write("\n".join(rows))
     output.close()
     print("[kumparanian]: Generating {} ... DONE".format(output_file))
 
 
 def generate_data(candidate_name, output_dir, num_files, num_workers):
-    """Generate assesment data given candidate_name and output_dir """
+    """Generate assesment data given candidate_name and output_dir"""
     random_seed_template = "{id}_{{num:02d}}".format(id=candidate_name)
-    output_template = "{dir}/{id}_{{num:02d}}.csv".format(dir=output_dir,
-                                                          id=candidate_name)
+    output_template = "{dir}/{id}_{{num:02d}}.csv".format(
+        dir=output_dir, id=candidate_name
+    )
     # Generating NUM_FILES files that each have size of 100mb
     # We generate in parallel to speed up
     # We use up to 4 workers in parallel

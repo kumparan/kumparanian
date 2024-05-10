@@ -27,17 +27,21 @@ def verify(path):
     try:
         article_topic = model.predict(example_content)
     except AttributeError as err:
-        error_msg = ("Model should contains predict method: "
-                     "model.predict(artcile_content)")
+        error_msg = (
+            "Model should contains predict method: " "model.predict(artcile_content)"
+        )
         raise AttributeError(error_msg)
     except TypeError as err:
-        error_msg = ("Model should accept string as argument: "
-                     "model.predict(artcile_content)")
+        error_msg = (
+            "Model should accept string as argument: " "model.predict(artcile_content)"
+        )
         raise TypeError(error_msg)
 
     # Make sure the article_topic is string
-    error_msg = ("Predict method should return a string: "
-                 "artcile_topic = model.predict(article_content)")
+    error_msg = (
+        "Predict method should return a string: "
+        "artcile_topic = model.predict(article_content)"
+    )
     assert isinstance(article_topic, str), error_msg
 
     return True
@@ -50,8 +54,8 @@ def save(model_object, path):
 
 
 def evaluate(model_path, test_set_path, data_type=None):
-    """ Evaluate the model accuracy; it assumes that the model is valid
-        otherwise it will throw an exception """
+    """Evaluate the model accuracy; it assumes that the model is valid
+    otherwise it will throw an exception"""
     # Load the model first
     model_file = open(model_path, "rb")
     model = dill.load(model_file)
@@ -69,4 +73,4 @@ def evaluate(model_path, test_set_path, data_type=None):
             sample_count += 1
             if article_topic == expected_article_topic:
                 correct_predict += 1
-        return float(correct_predict)/sample_count
+        return float(correct_predict) / sample_count

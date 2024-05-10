@@ -1,5 +1,5 @@
-import os
 import csv
+import os
 
 
 def verify(submission_dir):
@@ -63,8 +63,7 @@ def verify(submission_dir):
             raise ValueError(err_msg)
         sum_col = row.get("account_balance", None)
         if sum_col is None:
-            err_msg = ("task_3_result.csv should contains account_balance "
-                       "column")
+            err_msg = "task_3_result.csv should contains account_balance " "column"
             raise ValueError(err_msg)
 
     # Task 4

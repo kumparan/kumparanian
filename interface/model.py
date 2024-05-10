@@ -81,7 +81,7 @@ class Model:
         ds.model.save(self, "model.pickle")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # NOTE: Edit this if you add more initialization parameter
     model = Model()
 
