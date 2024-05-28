@@ -35,11 +35,11 @@ jobs:
       run: |
         poetry install
 
+    - name: Install make
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make
+
     - name: Run tests
       run: |
-        poetry run tests/ds/model_test.py
-        poetry run tests/cli_test.py
-
-    - name: Clean up temporary files
-      run: |
-        rm -rf test_*
+        make test
