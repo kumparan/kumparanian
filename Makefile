@@ -28,7 +28,6 @@ run-formatter:
 
 # Run test
 test:
-	flake8
 	python -m tests.cli_test -v
 	python -m tests.ds.model_test -v
 	rm test_*

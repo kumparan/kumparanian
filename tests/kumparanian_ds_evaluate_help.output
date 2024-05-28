@@ -1,10 +1,10 @@
-Usage: kumparanian ds evaluate [OPTIONS] MODEL TESTFILE
+Usage: kumparanian ds evaluate [OPTIONS] MODEL FILE TESTFILE
 
   Evaluate the model
 
   Example:
 
-  $ kumparanian ds evaluate YOURMODEL.pickle test_file.csv
+  $ kumparanian ds evaluate YOURMODEL.pickle YOURFILE.pickle test_file.csv
 
 Options:
   --help  Show this message and exit.
