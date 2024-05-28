@@ -1,8 +1,8 @@
 import os
 import unittest
 
-# Set the logging level for TensorFlow to only display warnings and errors,
-# hiding informational messages. This is done to reduce noise in the console output.
+# Set the logging level for TensorFlow to hide warnings and errors,
+# and informational messages. This is done to reduce noise in the console output.
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 
 import pickle
