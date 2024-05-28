@@ -19,21 +19,9 @@ jobs:
       run: |
         pip install poetry==1.8.3
 
-    - name: Configure Poetry
-      run: |
-        poetry config virtualenvs.in-project true
-
-    - name: Cache the virtualenv
-      uses: actions/cache@v3
-      with:
-        path: ./.venv
-        key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-venv-
-
     - name: Install dependencies
       run: |
-        poetry install
+        poetry config virtualenvs.create false && poetry install --only main
 
     - name: Install make
       run: |
