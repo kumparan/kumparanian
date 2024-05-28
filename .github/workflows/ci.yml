@@ -37,8 +37,8 @@ jobs:
 
     - name: Run tests
       run: |
-        poetry run pytest model_test.py
-        poetry run pytest cli_test.py
+        poetry run pytest tests/ds/model_test.py
+        poetry run pytest tests/cli_test.py
 
     - name: Clean up temporary files
       run: |
