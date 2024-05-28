@@ -1,3 +1,4 @@
-Usage: kumparanian ds verify [OPTIONS] MODEL FILE
+Usage: python -m kumparanian ds verify [OPTIONS] MODEL FILE
+Try 'python -m kumparanian ds verify --help' for help.
 
-Error: Missing argument "model".
+Error: Missing argument 'MODEL'.
