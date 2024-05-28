@@ -13,7 +13,6 @@ license = "kumparan"
 readme = "README.md"
 packages = [
     { include = "kumparanian" },
-    { include = "kumparanian/de" },
     { include = "kumparanian/ds" },
 ]
 
