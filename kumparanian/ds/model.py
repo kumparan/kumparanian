@@ -5,9 +5,9 @@ import warnings
 import pickle
 import numpy as np
 
-# Set the logging level for TensorFlow to hide warnings, errors,
-# and informational messages. This is done to reduce noise in the console output.
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+# Set the logging level for TensorFlow to hide warnings and informational
+# messages. This is done to reduce noise in the console output.
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
