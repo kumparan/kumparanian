@@ -23,10 +23,12 @@ numpy = "1.24.3"
 click = "^8.1.7"
 colorama = "^0.4.6"
 tensorflow = "2.13.0"
+scikit-learn = "1.4.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.4.2"
 isort = "^5.13.2"
+pytest = "^8.2.1"
 
 [build-system]
 requires = ["poetry-core"]
