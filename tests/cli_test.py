@@ -146,55 +146,6 @@ class TestCLI(unittest.TestCase):
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
         self.assertEqual(expected_output, output.decode("utf-8"))
 
-    # def test_kumparanian_de(self):
-    #     with open("tests/kumparanian_de.output") as f:
-    #         expected_output = f.read()
-    #     command = "kumparanian de"
-    #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-    #     self.assertEqual(expected_output, output.decode("utf-8"))
-    #
-    # def test_kumparanian_de_help(self):
-    #     with open("tests/kumparanian_de_help.output") as f:
-    #         expected_output = f.read()
-    #     command = "kumparanian de --help"
-    #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-    #     self.assertEqual(expected_output, output.decode("utf-8"))
-    #
-    # def test_kumparanian_de_generate_dataset_help(self):
-    #     with open("tests/kumparanian_de_generate_dataset_help.output") as f:
-    #         expected_output = f.read()
-    #     command = "kumparanian de generate-dataset --help"
-    #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-    #     self.assertEqual(expected_output, output.decode("utf-8"))
-    #
-    # def test_kumparanian_de_verify(self):
-    #     with open("tests/kumparanian_de_verify.output") as f:
-    #         expected_output = f.read()
-    #     command = "kumparanian de verify; exit 0"
-    #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-    #     self.assertEqual(expected_output, output.decode("utf-8"))
-    #
-    # def test_kumparanian_de_verify_help(self):
-    #     with open("tests/kumparanian_de_verify_help.output") as f:
-    #         expected_output = f.read()
-    #     command = "kumparanian de verify --help"
-    #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-    #     self.assertEqual(expected_output, output.decode("utf-8"))
-    #
-    # def test_kumparanian_de_verify_valid(self):
-    #     with open("tests/kumparanian_de_verify_valid.output") as f:
-    #         expected_output = f.read()
-    #     command = "kumparanian de verify tests/de/de_test_valid/; exit 0"
-    #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-    #     self.assertEqual(expected_output, output.decode("utf-8"))
-    #
-    # def test_kumparanian_de_verify_invalid(self):
-    #     with open("tests/kumparanian_de_verify_invalid.output") as f:
-    #         expected_output = f.read()
-    #     command = "kumparanian de verify tests/de/de_test_invalid/; exit 0"
-    #     output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-    #     self.assertEqual(expected_output, output.decode("utf-8"))
-
 
 if __name__ == "__main__":
     unittest.main()

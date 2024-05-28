@@ -2,7 +2,6 @@ import multiprocessing
 
 import click
 
-import kumparanian.de as de
 import kumparanian.ds as ds
 
 # Help texts
@@ -52,55 +51,6 @@ def evaluate(model, file, testfile):
     # Evaluate the model; only shows accuracy
     acc = ds.model.evaluate(model, file, testfile, data_type="topic_model")
     click.echo("Accuracy: {}".format(acc))
-
-
-@cli.group(name="de", help=de.help_text, epilog=epilog)
-def de_group():
-    pass
-
-
-@de_group.command(
-    name="generate-dataset", short_help=de.generate_short_help, help=de.generate_usage
-)
-@click.argument("candidate_name", type=str)
-@click.option(
-    "--output-dir",
-    default="data",
-    help="Output directory",
-    type=click.Path(exists=False, file_okay=False, writable=True),
-)
-@click.option("--num-files", default=40, type=int, help="Number of files")
-@click.option("--num-workers", default=4, type=int, help="Number of workers")
-def generate_dataset(candidate_name, output_dir, num_files, num_workers):
-    de.dataset.generate_data(
-        candidate_name=candidate_name,
-        output_dir=output_dir,
-        num_files=num_files,
-        num_workers=num_workers,
-    )
-    click.secho("[kumparanian] Output: " + output_dir + "/", fg="green")
-
-
-@de_group.command(name="verify", short_help=de.verify_short_help, help=de.verify_usage)
-@click.argument("submission_dir", type=click.Path(exists=True))
-def verify_submission(submission_dir):
-    try:
-        de.submission.verify(submission_dir)
-    except Exception as err:
-        message = "[INVALID] {}".format(err)
-        click.secho(message, fg="red")
-        exit(1)
-    click.secho("[VALID] Submission is valid.", fg="green")
-    exit(0)
-
-
-@de_group.command(
-    name="evaluate", short_help=de.evaluate_short_help, help=de.evaluate_usage
-)
-@click.argument("submission_dir", type=str)
-@click.argument("solution_dir", type=str)
-def evaluate_submission(submission_dir, solution_dir):
-    de.submission.evaluate(submission_dir, solution_dir)
 
 
 def main():
