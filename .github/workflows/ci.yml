@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: python:3.10-bullseye
 
     steps:
     - name: Checkout repository
