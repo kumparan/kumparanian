@@ -23,6 +23,18 @@ jobs:
       run: |
         poetry config virtualenvs.create false && poetry install --only main
 
+    - name: Build package
+      run: |
+        poetry build
+
+    - name: Verify dist directory
+      run: |
+        ls -l dist
+
+    - name: Install built package
+      run: |
+        pip install dist/*.whl
+
     - name: Install make
       run: |
         sudo apt-get update

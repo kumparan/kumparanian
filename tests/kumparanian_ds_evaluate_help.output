@@ -1,4 +1,4 @@
-Usage: python -m kumparanian ds evaluate [OPTIONS] MODEL FILE TESTFILE
+Usage: kumparanian ds evaluate [OPTIONS] MODEL FILE TESTFILE
 
   Evaluate the model
 

@@ -1,4 +1,4 @@
-Usage: python -m kumparanian ds verify [OPTIONS] MODEL FILE
+Usage: kumparanian ds verify [OPTIONS] MODEL FILE
 
   Verify the model
 

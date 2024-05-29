@@ -1,4 +1,4 @@
-Usage: python -m kumparanian ds evaluate [OPTIONS] MODEL FILE TESTFILE
-Try 'python -m kumparanian ds evaluate --help' for help.
+Usage: kumparanian ds evaluate [OPTIONS] MODEL FILE TESTFILE
+Try 'kumparanian ds evaluate --help' for help.
 
 Error: Missing argument 'MODEL'.
