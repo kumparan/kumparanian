@@ -16,35 +16,32 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.text import Tokenizer
 
 
-class Model:
+def load_model_and_components(model_path, file_path):
+    """
+    Load trained model, vectorizer/tokenizer, and label encoder from file.
 
-    @staticmethod
-    def load(model_path, file_path):
-        """
-        Load trained model, vectorizer, and label encoder from file.
+    Args:
+        model_path (str): Path to the model file.
+        file_path (str): Path to the file containing the vectorizer/tokenizer and label encoder.
 
-        Args:
-            model_path (str): Path to the model file.
-            file_path (str): Path to the file containing the vectorizer/tokenizer and label encoder.
+    Returns:
+        tuple: Contains the model, vectorizer/tokenizer, and label encoder
+    """
+    with open(file_path, "rb") as file:
+        saved_data = pickle.load(file)
 
-        Returns:
-            tuple: Contains the model, label encoder, and vectorizer/tokenizer
-        """
-        with open(file_path, "rb") as file:
-            saved_data = pickle.load(file)
+    label_encoder = saved_data["label_encoder"]
+    model_extension = os.path.splitext(model_path)[1]
 
-        label_encoder = saved_data["label_encoder"]
-        model_extension = os.path.splitext(model_path)[1]
-
-        if model_extension in [".pickle", ".pkl"]:
-            with open(model_path, "rb") as model_file:
-                model = pickle.load(model_file)
-            vectorizer = saved_data["vectorizer"]
-            return model, label_encoder, vectorizer, model_extension
-        elif model_extension in [".keras"]:
-            model = load_model(model_path, compile=False)
-            tokenizer = saved_data["tokenizer"]
-            return model, label_encoder, tokenizer, model_extension
+    if model_extension in [".pickle", ".pkl"]:
+        with open(model_path, "rb") as model_file:
+            model = pickle.load(model_file)
+        vectorizer = saved_data["vectorizer"]
+        return model, vectorizer, label_encoder, model_extension
+    elif model_extension in [".keras"]:
+        model = load_model(model_path, compile=False)
+        tokenizer = saved_data["tokenizer"]
+        return model, tokenizer, label_encoder, model_extension
 
 
 def verify(model_path, file_path):
@@ -82,7 +79,7 @@ def verify(model_path, file_path):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", category=UserWarning)
             warnings.simplefilter("ignore", category=DeprecationWarning)
-            model, label_encoder, preprocessor, model_extension = Model.load(
+            model, preprocessor, label_encoder, model_extension = load_model_and_components(
                 model_path, file_path
             )
     except Exception:
@@ -212,7 +209,7 @@ def evaluate(model_path, file_path, test_set_path, data_type=None):
     with warnings.catch_warnings():
         warnings.simplefilter("ignore", category=UserWarning)
         warnings.simplefilter("ignore", category=DeprecationWarning)
-        model, label_encoder, preprocessor, model_extension = Model.load(model_path, file_path)
+        model, preprocessor, label_encoder, model_extension = load_model_and_components(model_path, file_path)
 
     if data_type == "topic_model":
         with open(test_set_path, "r") as test_file:

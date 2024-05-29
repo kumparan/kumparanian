@@ -88,8 +88,8 @@ class TestModel(unittest.TestCase):
             self.sklearn_model_path,
             self.file_path,
         )
-        loaded_model, loaded_label_encoder, loaded_vectorizer, loaded_model_extension = (
-            model.Model.load(self.sklearn_model_path, self.file_path)
+        loaded_model, loaded_vectorizer, loaded_label_encoder, loaded_model_extension = (
+            model.load_model_and_components(self.sklearn_model_path, self.file_path)
         )
 
         sample_input = self.valid_vectorizer.transform(["sample text"])
@@ -112,8 +112,8 @@ class TestModel(unittest.TestCase):
             self.tf_model_path,
             self.file_path,
         )
-        loaded_model, loaded_label_encoder, loaded_tokenizer, loaded_model_extension = (
-            model.Model.load(self.tf_model_path, self.file_path)
+        loaded_model, loaded_tokenizer, loaded_label_encoder, loaded_model_extension = (
+            model.load_model_and_components(self.tf_model_path, self.file_path)
         )
 
         sample_input = self.valid_tokenizer.texts_to_sequences(["sample text"])
