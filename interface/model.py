@@ -20,7 +20,7 @@ save your trained model, fitted preprocessor, and label encoder.
 You may not edit this directly.
 
 You can add more initialization parameter and define
-new methods to the Model class.
+new methods to the `Model` class.
 
 Usage:
 Install `kumparanian` first:
@@ -32,7 +32,7 @@ Run
     python model.py
 
 It will run the training and save your trained model to
-file `model.pickle` for scikit-learn and 'model.keras'
+file `model.pickle` for scikit-learn and `model.keras`
 for TensorFlow. It will also save your fitted preprocessor
 and label_encoder to file 'preprocessor_label_encoder.pickle'.
 """
