@@ -51,7 +51,7 @@ def create_valid_tf_model():
 
     tf_model = Sequential()
     tf_model.add(
-        Embedding(input_dim=1000, output_dim=64, input_length=10, name="embedding")
+        Embedding(input_dim=50, output_dim=4, input_length=10, name="embedding")
     )
     tf_model.add(Flatten())
     tf_model.add(Dense(1, activation="sigmoid", name="dense"))
