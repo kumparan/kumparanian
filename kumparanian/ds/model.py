@@ -36,12 +36,12 @@ class Model:
         label_encoder = saved_data["label_encoder"]
         model_extension = os.path.splitext(model_path)[1]
 
-        if model_extension == ".pickle" or model_extension == ".pkl":
+        if model_extension in [".pickle", ".pkl"]:
             with open(model_path, "rb") as model_file:
                 model = pickle.load(model_file)
             vectorizer = saved_data["vectorizer"]
             return model, label_encoder, vectorizer, model_extension
-        elif model_extension == ".keras":
+        elif model_extension in [".keras"]:
             model = load_model(model_path, compile=False)
             tokenizer = saved_data["tokenizer"]
             return model, label_encoder, tokenizer, model_extension
@@ -100,7 +100,7 @@ def verify(model_path, file_path):
         "KBRN, Pekanbaru (MCH): Kloter Tujuh Embarkasi Batam yang mengangkut Jemaah Calon Haji (JCH)"
     ]
 
-    if model_extension == ".pickle" or model_extension == ".pkl":
+    if model_extension in [".pickle", ".pkl"]:
         if not isinstance(preprocessor, TfidfVectorizer):
             raise TypeError(
                 "Vectorizer should be an instance of sklearn.feature_extraction.text.TfidfVectorizer"
@@ -119,7 +119,7 @@ def verify(model_path, file_path):
         if not isinstance(result, str):
             raise TypeError("The result should be a string")
 
-    elif model_extension == ".keras":
+    elif model_extension in [".keras"]:
         if not isinstance(preprocessor, Tokenizer):
             raise TypeError(
                 "Tokenizer should be an instance of tf.keras.preprocessing.text.Tokenizer"
@@ -164,7 +164,7 @@ def save(
 
     model_extension = os.path.splitext(model_path)[1]
 
-    if model_extension == ".pickle" or model_extension == ".pkl":
+    if model_extension in [".pickle", ".pkl"]:
         # Save the scikit-learn model using dill
         with open(model_path, "wb") as model_file:
             pickle.dump(model_object, model_file)
@@ -179,7 +179,7 @@ def save(
                 file,
             )
 
-    elif model_extension == ".keras":
+    elif model_extension in [".keras"]:
         # Save the TensorFlow model using Keras' save model function
         model_object.save(model_path)
 
@@ -223,13 +223,13 @@ def evaluate(model_path, file_path, test_set_path, data_type=None):
                 article_content = row["article_content"]
                 expected_article_topic = row["article_topic"]
 
-                if model_extension == ".pickle" or model_extension == ".pkl":
+                if model_extension in [".pickle", ".pkl"]:
                     vectorized_text = preprocessor.transform([article_content])
                     article_topic_numeric = model.predict(vectorized_text)
                     predicted_article_topic = label_encoder.inverse_transform(
                         article_topic_numeric
                     )[0]
-                elif model_extension == ".keras":
+                elif model_extension in [".keras"]:
                     X_preprocessed = preprocessor.texts_to_sequences([article_content])
                     max_sequence_length = model.input_shape[1]
                     X_padded = pad_sequences(X_preprocessed, maxlen=max_sequence_length)

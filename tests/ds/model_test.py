@@ -128,8 +128,8 @@ class TestModel(unittest.TestCase):
     def test_invalid_pickle(self):
         """Test case for handling invalid pickle files."""
         file_name = "test_invalid_pickle.pickle"
-        with open(file_name, "w") as f:
-            f.write("invalid pickle file")
+        with open(file_name, "w") as file:
+            file.write("invalid pickle file")
         with self.assertRaises(ValueError):
             model.verify(self.sklearn_model_path, file_name)
         os.remove(file_name)
@@ -140,16 +140,16 @@ class TestModel(unittest.TestCase):
         preprocessor = self.valid_vectorizer
         label_encoder = self.valid_label_encoder
 
-        with open(self.file_path, "wb") as f:
+        with open(self.file_path, "wb") as file:
             pickle.dump(
                 {
                     "vectorizer": preprocessor,
                     "label_encoder": label_encoder,
                 },
-                f,
+                file,
             )
-        with open(self.sklearn_model_path, "wb") as f:
-            pickle.dump(model_obj, f)
+        with open(self.sklearn_model_path, "wb") as file:
+            pickle.dump(model_obj, file)
 
         with self.assertRaises(AttributeError):
             model.verify(self.sklearn_model_path, self.file_path)
@@ -160,16 +160,16 @@ class TestModel(unittest.TestCase):
         preprocessor = self.valid_vectorizer
         label_encoder = self.valid_label_encoder
 
-        with open(self.file_path, "wb") as f:
+        with open(self.file_path, "wb") as file:
             pickle.dump(
                 {
                     "vectorizer": preprocessor,
                     "label_encoder": label_encoder,
                 },
-                f,
+                file,
             )
-        with open(self.sklearn_model_path, "wb") as f:
-            pickle.dump(model_obj, f)
+        with open(self.sklearn_model_path, "wb") as file:
+            pickle.dump(model_obj, file)
 
         with self.assertRaises(ValueError):
             model.verify(self.sklearn_model_path, self.file_path)
@@ -180,16 +180,16 @@ class TestModel(unittest.TestCase):
         preprocessor = self.valid_vectorizer
         label_encoder = self.valid_label_encoder
 
-        with open(self.file_path, "wb") as f:
+        with open(self.file_path, "wb") as file:
             pickle.dump(
                 {
                     "vectorizer": preprocessor,
                     "label_encoder": label_encoder,
                 },
-                f,
+                file,
             )
-        with open(self.sklearn_model_path, "wb") as f:
-            pickle.dump(model_obj, f)
+        with open(self.sklearn_model_path, "wb") as file:
+            pickle.dump(model_obj, file)
 
         with self.assertRaises(TypeError):
             model.verify(self.sklearn_model_path, self.file_path)
@@ -216,16 +216,16 @@ class TestModel(unittest.TestCase):
         preprocessor = "Invalid Vectorizer"
         label_encoder = self.valid_label_encoder
 
-        with open(self.file_path, "wb") as f:
+        with open(self.file_path, "wb") as file:
             pickle.dump(
                 {
                     "vectorizer": preprocessor,
                     "label_encoder": label_encoder,
                 },
-                f,
+                file,
             )
-        with open(self.sklearn_model_path, "wb") as f:
-            pickle.dump(invalid_model_obj, f)
+        with open(self.sklearn_model_path, "wb") as file:
+            pickle.dump(invalid_model_obj, file)
 
         with self.assertRaises(TypeError):
             model.verify(self.sklearn_model_path, self.file_path)
@@ -236,16 +236,16 @@ class TestModel(unittest.TestCase):
         preprocessor = self.valid_vectorizer
         label_encoder = "Invalid Label Encoder"
 
-        with open(self.file_path, "wb") as f:
+        with open(self.file_path, "wb") as file:
             pickle.dump(
                 {
                     "vectorizer": preprocessor,
                     "label_encoder": label_encoder,
                 },
-                f,
+                file,
             )
-        with open(self.sklearn_model_path, "wb") as f:
-            pickle.dump(invalid_model_obj, f)
+        with open(self.sklearn_model_path, "wb") as file:
+            pickle.dump(invalid_model_obj, file)
 
         with self.assertRaises(TypeError):
             model.verify(self.sklearn_model_path, self.file_path)
