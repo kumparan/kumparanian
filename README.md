@@ -21,12 +21,16 @@ consult its help command:
       Before you submit your trained model, you can verify your trained model
       using the following command:
 
-      $ kumparanian ds verify YOURMODEL.pickle
+      $ kumparanian ds verify YOURMODEL.pickle YOURFILE.pickle
+    
+      YOURMODEL.pickle should contain your trained model, and YOURFILE.pickle
+      should contain the necessary preprocessing components such as the vectorizer, 
+      label encoder, and model type.
 
       Use the following command to evaluate your trained model against your test
       dataset:
 
-      $ kumparanian ds evaluate YOURMODEL.pickle test_file.csv
+      $ kumparanian ds evaluate YOURMODEL.pickle YOURFILE.pickle test_file.csv
 
     Options:
       --help  Show this message and exit.
