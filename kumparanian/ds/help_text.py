@@ -7,7 +7,8 @@ the following command:
 $ kumparanian ds verify YOURMODEL.pickle YOURFILE.pickle
 
 YOURMODEL.pickle should contain your trained model, and YOURFILE.pickle
-should contain the necessary preprocessing components such as the vectorizer and label encoder.
+should contain the necessary preprocessing components such as the vectorizer 
+and label encoder.
 
 Use the following command to evaluate your trained model against your test
 dataset:
