@@ -1,8 +1,8 @@
-Usage: kumparanian ds verify [OPTIONS] MODEL
+Usage: kumparanian ds verify [OPTIONS] MODEL FILE
 
   Verify the model
 
-  Example: $ kumparanian ds verify YOURMODEL.pickle
+  Example: $ kumparanian ds verify YOURMODEL.pickle YOURFILE.pickle
 
 Options:
   --help  Show this message and exit.

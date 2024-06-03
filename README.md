@@ -1,9 +1,10 @@
 # Kumparanian [![Build Status](https://travis-ci.org/kumparan/kumparanian.svg?branch=master)](https://travis-ci.org/kumparan/kumparanian) [![PyPI version](https://badge.fury.io/py/kumparanian.svg)](https://badge.fury.io/py/kumparanian)
-Kumparanian is a set of workflows that optimize Kumparan's data engineering 
-and data scientist hiring process. It cuts down 1-2 working day(s) submission 
-review process to just less than an hour.
+Kumparanian is a set of workflows that optimize Kumparan's data scientist 
+hiring process. It cuts down 1-2 working day(s) submission review process 
+to just less than an hour.
 
-If you are our candidate, you need to install `kumparanian` using following command (we highly recommend to install inside virtual env, like venv):
+If you are our candidate, you need to install `kumparanian` using following command 
+(we highly recommend to install inside virtual env, like venv):
 
     python -m venv <your_env_name>
 
@@ -21,12 +22,16 @@ consult its help command:
       Before you submit your trained model, you can verify your trained model
       using the following command:
 
-      $ kumparanian ds verify YOURMODEL.pickle
+      $ kumparanian ds verify YOURMODEL.pickle YOURFILE.pickle
+    
+      YOURMODEL.pickle should contain your trained model, and YOURFILE.pickle
+      should contain the necessary preprocessing components such as the vectorizer 
+      and label encoder.
 
       Use the following command to evaluate your trained model against your test
       dataset:
 
-      $ kumparanian ds evaluate YOURMODEL.pickle test_file.csv
+      $ kumparanian ds evaluate YOURMODEL.pickle YOURFILE.pickle test_file.csv
 
     Options:
       --help  Show this message and exit.

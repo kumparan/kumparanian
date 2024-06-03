@@ -16,10 +16,11 @@ the Kumparan team for what is the input and the output
 of the method.
 
 In this interface, we implement `save` method to helps you
-save your trained model. You may not edit this directly.
+save your trained model, fitted preprocessor, and label encoder.
+You may not edit this directly.
 
 You can add more initialization parameter and define
-new methods to the Model class.
+new methods to the `Model` class.
 
 Usage:
 Install `kumparanian` first:
@@ -31,7 +32,9 @@ Run
     python model.py
 
 It will run the training and save your trained model to
-file `model.pickle`.
+file `model.pickle` for scikit-learn and `model.keras`
+for TensorFlow. It will also save your fitted preprocessor
+and label_encoder to file 'preprocessor_label_encoder.pickle'.
 """
 
 from kumparanian import ds
@@ -47,6 +50,14 @@ class Model:
         """
         You can add more parameter here to initialize your model
         """
+        # Instantiate preprocessor and label encoder
+        self.preprocessor = "YourPreprocessorClass()"
+        # Delete the string and replace YourPreprocessorClass with your
+        # actual preprocessor class (tokenizer/vectorizer)
+        self.label_encoder = "YourLabelEncoderClass()"
+        # Delete the string and replace YourLabelEncoderClass with your
+        # actual label encoder class, delete the string
+
         pass
 
     def train(self):
@@ -54,10 +65,12 @@ class Model:
         NOTE: Implement your training procedure in this method.
         """
 
-        # Examples; psuedocode
+        # Example:
         # data = read_dataset("file.csv")
-        # self.network = torch.RNN ...
-        # self.network.train(data)
+        # preprocessed_data = self.preprocessor.fit_transform(data)
+        # encoded_labels = self.label_encoder.fit_transform(labels)
+        # self.model.fit(preprocessed_data, encoded_labels)
+        # Replace the above lines with your actual training procedure
 
         raise NotImplementedError  # Delete this line
 
@@ -66,19 +79,27 @@ class Model:
         NOTE: Implement your predict procedure in this method.
         """
 
-        # Examples; psuedocode
-        # processed_input = process_input(input)
-        # output = self.network.forward(processed_input)
-        # label = get_label(output)
-        # return label
+        # Example:
+        # processed_input = self.preprocessor.transform(input)
+        # output = self.model.predict(processed_input)
+        # decoded_label = self.label_encoder.inverse_transform(output)
+        # return decoded_label
+        # Replace the above lines with your actual prediction procedure
 
         raise NotImplementedError  # Delete this line
 
-    def save(self):
+    def save(self, model):
         """
-        Save trained model to model.pickle file.
+        If it's scikit-learn model, save trained model to model.pickle file
+        and if it's tensorflow model, save trained model to model.keras file
         """
-        ds.model.save(self, "model.pickle")
+        ds.model.save(
+            model,
+            self.preprocessor,
+            self.label_encoder,
+            "model.pickle",
+            "preprocessor_label_encoder.pickle",
+        )
 
 
 if __name__ == "__main__":
@@ -89,4 +110,4 @@ if __name__ == "__main__":
     model.train()
 
     # Save your trained model to model.pickle
-    model.save()
+    model.save(model)

@@ -1,3 +1,4 @@
-Usage: kumparanian ds verify [OPTIONS] MODEL
+Usage: kumparanian ds verify [OPTIONS] MODEL FILE
+Try 'kumparanian ds verify --help' for help.
 
-Error: Missing argument "model".
+Error: Missing argument 'MODEL'.

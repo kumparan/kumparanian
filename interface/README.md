@@ -16,8 +16,8 @@ the Kumparan team for what is the input and the output
 of the method.
 
 In this interface, we implement `save` method to helps you
-save your trained model. You may not edit this method 
-directly.
+save your trained model, fitted preprocessor, and label encoder.
+You may not edit this directly.
 
 You can add more initialization parameter and define
 new methods to the `Model` class.
@@ -34,4 +34,6 @@ Run
     python model.py
 
 It will run the training and save your trained model to
-file `model.pickle`.
+file `model.pickle` for scikit-learn and `model.keras`
+for TensorFlow. It will also save your fitted preprocessor
+and label_encoder to file 'preprocessor_label_encoder.pickle'.

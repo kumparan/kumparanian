@@ -1,0 +1,1 @@
+[INVALID] Label encoder should be an instance of sklearn.preprocessing.LabelEncoder
