@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kumparanian"
-version = "1.2.0"
+version = "1.2.1"
 description = "Kumparanian CLI"
 authors = ["Zavli Juwantara <zavli.juwantara@kumparan.com>"]
 repository = "https://github.com/kumparan/kumparanian"
