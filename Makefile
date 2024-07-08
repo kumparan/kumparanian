@@ -26,6 +26,10 @@ run-formatter:
 	isort .
 	black .
 
+check-vulnerabilities:
+	poetry export --without-hashes --format=requirements.txt > requirements.txt
+	poetry run pip-audit -r requirements.txt
+
 # Run test
 test:
 	python -m tests.cli_test -v
