@@ -23,6 +23,11 @@ jobs:
       run: |
         poetry config virtualenvs.create false && poetry install --only main
 
+    - name: Vulnerabilities checker
+      run: |
+        poetry export --without-hashes --format=requirements.txt > requirements.txt
+        poetry run pip-audit -r requirements.txt
+
     - name: Build package
       run: |
         poetry build
