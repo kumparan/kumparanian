@@ -21,7 +21,12 @@ jobs:
 
     - name: Install dependencies
       run: |
-        poetry config virtualenvs.create false && poetry install --only main
+        poetry config virtualenvs.create false && poetry install
+
+    - name: Vulnerabilities checker
+      run: |
+        poetry export --without-hashes --format=requirements.txt > requirements.txt
+        poetry run pip-audit -r requirements.txt
 
     - name: Build package
       run: |
