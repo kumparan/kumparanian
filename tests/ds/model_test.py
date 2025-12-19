@@ -7,6 +7,7 @@ os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 import pickle
 import numpy as np
+import keras
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.layers import Dense, Embedding, Flatten
@@ -50,12 +51,16 @@ def create_valid_tf_model():
     """Dummy Valid Tensorflow Model."""
 
     tf_model = Sequential()
+    tf_model.add(keras.Input(shape=(10,)))
     tf_model.add(
-        Embedding(input_dim=50, output_dim=4, input_length=10, name="embedding")
+        Embedding(input_dim=50, output_dim=4, name="embedding")
     )
     tf_model.add(Flatten())
-    tf_model.add(Dense(1, activation="sigmoid", name="dense"))
+    tf_model.add(Dense(8, activation="relu"))
+    tf_model.add(Dense(1, activation="sigmoid")) 
     tf_model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
+    tf_model.build(input_shape=(None, 10)) 
+
     return tf_model
 
 

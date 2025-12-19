@@ -10,15 +10,17 @@ epilog = (
     "https://github.com/kumparan/kumparanian/issues"
 )
 
-
-@click.group(epilog=epilog)
-def cli():
-    pass
-
-
-@cli.group(name="ds", help=ds.help_text, epilog=epilog)
-def ds_group():
-    pass
+@click.group(epilog=epilog, invoke_without_command=True)
+@click.pass_context
+def cli(ctx):
+    if ctx.invoked_subcommand is None:
+        click.echo(ctx.get_help())
+        
+@cli.group(name="ds", help=ds.help_text, epilog=epilog, invoke_without_command=True)
+@click.pass_context
+def ds_group(ctx):
+    if ctx.invoked_subcommand is None:
+        click.echo(ctx.get_help())
 
 
 @ds_group.command(short_help=ds.verify_short_help, help=ds.verify_usage)
