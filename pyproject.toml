@@ -26,7 +26,7 @@ tensorflow = "2.16.1"
 scikit-learn = "1.5.1"
 dill = "0.3.8"
 tf-keras = "2.16.0"
-urllib3 = "2.6.0"
+urllib3 = "2.6.3"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.4.2"
