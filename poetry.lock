@@ -705,7 +705,10 @@ files = [
 ]
 
 [package.dependencies]
-numpy = {version = ">=1.23.3", markers = "python_version >= \"3.11\""}
+numpy = [
+    {version = ">=1.23.3", markers = "python_version == \"3.11\""},
+    {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
+]
 
 [package.extras]
 dev = ["absl-py", "pyink", "pylint (>=2.6.0)", "pytest", "pytest-xdist"]
@@ -1815,5 +1818,5 @@ dev = ["pytest", "setuptools"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.11,<3.12"
-content-hash = "541ec3b646a3fbf657972c5ca18137e18f7d0a0998f28efa24c19818d66b1c59"
+python-versions = ">=3.11,<3.13"
+content-hash = "18b21e48f1aa52bd80f365bbcc0a9011ae331c44b996d947783d12c9985bdf1a"

@@ -8,7 +8,8 @@ maintainers = [
     "Bayu <bayualdiyansyah@gmail.com>",
     "Raden <radenmaharjo@gmail.com>",
     "Aslam <aslam.hadi@kumparan.com>",
-    "Ghefira <ghefira.fatimah@kumparan.com>"
+    "Ghefira <ghefira.fatimah@kumparan.com>",
+    "Albert <albert.hosea@kumparan.com>"
 ]
 license = "kumparan"
 readme = "README.md"
