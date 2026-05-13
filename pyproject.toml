@@ -18,7 +18,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.11,<3.12"
+python = ">=3.11,<3.13"
 numpy = "2.4.4"
 click = "^8.1.7"
 colorama = "^0.4.6"
