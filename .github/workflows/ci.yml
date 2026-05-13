@@ -28,6 +28,10 @@ jobs:
         poetry export --without-hashes --format=requirements.txt > requirements.txt
         poetry run pip-audit -r requirements.txt
 
+    - name: Run tests
+      run: |
+        make test
+
     - name: Build package
       run: |
         poetry build
@@ -39,7 +43,3 @@ jobs:
     - name: Install built package
       run: |
         pip install dist/*.whl
-
-    - name: Run tests
-      run: |
-        make test
