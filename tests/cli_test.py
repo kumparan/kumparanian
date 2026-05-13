@@ -3,7 +3,7 @@ import subprocess
 import unittest
 
 class TestCLI(unittest.TestCase):
-    def _clean_tf_noise(self, output_bytes):
+    def _clean_tf_noise(self, output_bytes): #Remove absl/CUDA warnings from stderr
         lines = output_bytes.decode("utf-8").splitlines(keepends=True)
         lines = [l for l in lines if not l.startswith(("WARNING: All log messages before absl::", "I0000 "))]
         return "".join(lines)
