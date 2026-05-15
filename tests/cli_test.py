@@ -1,49 +1,54 @@
+import os
 import subprocess
 import unittest
 
-
 class TestCLI(unittest.TestCase):
+    def _clean_tf_noise(self, output_bytes): #Remove absl/CUDA warnings from stderr
+        lines = output_bytes.decode("utf-8").splitlines(keepends=True)
+        lines = [line for line in lines if not line.startswith(("WARNING: All log messages before absl::", "I0000 ", "E0000 "))]
+        return "".join(lines)
+
     def test_kumparanian(self):
         with open("tests/kumparanian.output") as file:
             expected_output = file.read()
         command = "kumparanian"
-        output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        output=subprocess.check_output(command,stderr=subprocess.STDOUT,shell=True)
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_help(self):
         with open("tests/kumparanian_help.output") as file:
             expected_output = file.read()
         command = "kumparanian --help"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds(self):
         with open("tests/kumparanian_ds.output") as file:
             expected_output = file.read()
         command = "kumparanian ds"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_help(self):
         with open("tests/kumparanian_ds_help.output") as file:
             expected_output = file.read()
         command = "kumparanian ds --help"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify(self):
         with open("tests/kumparanian_ds_verify.output") as file:
             expected_output = file.read()
         command = "kumparanian ds verify; exit 0"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_help(self):
         with open("tests/kumparanian_ds_verify_help.output") as file:
             expected_output = file.read()
         command = "kumparanian ds verify --help"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_valid_sklearn_model(self):
         with open("tests/kumparanian_ds_verify_valid_model.output") as file:
@@ -53,14 +58,14 @@ class TestCLI(unittest.TestCase):
             "tests/vectorizer_label_encoder.pickle"
         )
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_valid_tf_model(self):
         with open("tests/kumparanian_ds_verify_valid_model.output") as file:
             expected_output = file.read()
         command = "kumparanian ds verify tests/tf_valid_model.keras tests/tokenizer_label_encoder.pickle"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_invalid_pickle_file(self):
         with open("tests/kumparanian_ds_verify_invalid_pickle_file.output") as file:
@@ -70,7 +75,7 @@ class TestCLI(unittest.TestCase):
             "tests/tokenizer_label_encoder.pickle; exit 0"
         )
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_invalid_tokenizer(self):
         with open("tests/kumparanian_ds_verify_invalid_tokenizer.output") as file:
@@ -80,7 +85,7 @@ class TestCLI(unittest.TestCase):
             "tests/invalid_tokenizer.pickle; exit 0"
         )
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_invalid_vectorizer(self):
         with open("tests/kumparanian_ds_verify_invalid_vectorizer.output") as file:
@@ -90,7 +95,7 @@ class TestCLI(unittest.TestCase):
             "tests/invalid_vectorizer.pickle; exit 0"
         )
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_invalid_label_encoder(self):
         with open("tests/kumparanian_ds_verify_invalid_label_encoder.output") as file:
@@ -100,7 +105,7 @@ class TestCLI(unittest.TestCase):
             "tests/invalid_label_encoder.pickle; exit 0"
         )
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_verify_invalid_model_predict(self):
         with open("tests/kumparanian_ds_verify_invalid_model_predict.output") as file:
@@ -110,21 +115,21 @@ class TestCLI(unittest.TestCase):
             "tests/vectorizer_label_encoder.pickle; exit 0"
         )
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_evaluate(self):
         with open("tests/kumparanian_ds_evaluate.output") as file:
             expected_output = file.read()
         command = "kumparanian ds evaluate; exit 0"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_evaluate_help(self):
         with open("tests/kumparanian_ds_evaluate_help.output") as file:
             expected_output = file.read()
         command = "kumparanian ds evaluate --help"
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_evaluate_model(self):
         with open("tests/kumparanian_ds_evaluate_model.output") as file:
@@ -134,7 +139,7 @@ class TestCLI(unittest.TestCase):
             "tests/vectorizer_label_encoder.pickle; exit 0"
         )
         output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
     def test_kumparanian_ds_evaluate_model_test(self):
         with open("tests/kumparanian_ds_evaluate_model_test.output") as file:
@@ -143,8 +148,8 @@ class TestCLI(unittest.TestCase):
             "kumparanian ds evaluate tests/tf_valid_model.keras tests/tokenizer_label_encoder.pickle "
             "tests/test_set.csv; exit 0"
         )
-        output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-        self.assertEqual(expected_output, output.decode("utf-8"))
+        output = subprocess.check_output(command, stderr=subprocess.STDOUT , shell=True)
+        self.assertEqual(expected_output, self._clean_tf_noise(output))
 
 
 if __name__ == "__main__":
