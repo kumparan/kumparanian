@@ -5,7 +5,7 @@ import unittest
 class TestCLI(unittest.TestCase):
     def _clean_tf_noise(self, output_bytes): #Remove absl/CUDA warnings from stderr
         lines = output_bytes.decode("utf-8").splitlines(keepends=True)
-        lines = [l for l in lines if not l.startswith(("WARNING: All log messages before absl::", "I0000 "))]
+        lines = [line for line in lines if not line.startswith(("WARNING: All log messages before absl::", "I0000 ", "E0000 "))]
         return "".join(lines)
 
     def test_kumparanian(self):
